@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField, Tooltip("クリックして足される数")] static int _addScore = 1;
+    [SerializeField] bool cheat = false;
+    static int _addScore = 1;
 
     public void Click()
     {
         ScoreButtom();
+        if (cheat) _addScore += 1000000;
     }
     static  public void ScoreButtom()
     {

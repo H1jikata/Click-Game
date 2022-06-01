@@ -11,11 +11,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] int _totalScore = 0;
     Text _scoreObject;
     private GameManager() { }
-
-    void Start()
-    {
-        
-    }
     void Update()
     {
         Text _scoreObject = _scoreText.GetComponent<Text>();
