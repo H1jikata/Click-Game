@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    static private GameManager _instance = new GameManager();
+    static  GameManager _instance;
     static public GameManager Instance => _instance;
-    private GameManager() { }
 
     [SerializeField] GameObject _scoreText = default;
     [SerializeField] int _totalScore = 0;
@@ -15,8 +14,15 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null) DontDestroyOnLoad(this.gameObject);
-        else Destroy(this);
+        if (_instance != null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
     void Start()
     {
@@ -30,5 +36,12 @@ public class GameManager : MonoBehaviour
     static public void AddMoney (int num)
     {
         Instance._totalScore += num;
+    }
+    void OnDestroy()
+    {
+        if(_instance ==this)
+        {
+            _instance = null;
+        }
     }
 }

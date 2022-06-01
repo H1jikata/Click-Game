@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Score : MonoBehaviour
+public class NormalClick : MonoBehaviour
 {
     [SerializeField] bool cheat = false;
     static int _addScore = 1;
