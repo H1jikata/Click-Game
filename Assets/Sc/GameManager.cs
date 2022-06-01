@@ -7,18 +7,28 @@ public class GameManager : MonoBehaviour
 {
     static private GameManager _instance = new GameManager();
     static public GameManager Instance => _instance;
+    private GameManager() { }
+
     [SerializeField] GameObject _scoreText = default;
     [SerializeField] int _totalScore = 0;
-    Text _scoreObject;
-    private GameManager() { }
+    Text _text;
+
+    void Awake()
+    {
+        if (Instance == null) DontDestroyOnLoad(this.gameObject);
+        else Destroy(this);
+    }
+    void Start()
+    {
+        _text = _scoreText.GetComponent<Text>();
+    }
     void Update()
     {
-        Text _scoreObject = _scoreText.GetComponent<Text>();
-        _scoreObject.text = "" + _instance._totalScore;
+        _text.text = "" + Instance._totalScore;
     }
 
     static public void AddMoney (int num)
     {
-        _instance._totalScore += num;
+        Instance._totalScore += num;
     }
 }
