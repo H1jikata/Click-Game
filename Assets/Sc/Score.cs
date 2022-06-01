@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField, Tooltip("トータルスコア")] int _addScore = 0;
+    [SerializeField, Tooltip("クリックして足される数")] static int _addScore = 1;
 
-     public void ScoreButtom()
+    public void Click()
     {
-        _addScore++;
+        ScoreButtom();
+    }
+    static  public void ScoreButtom()
+    {
+        GameManager.AddMoney(_addScore);
     }
 }
