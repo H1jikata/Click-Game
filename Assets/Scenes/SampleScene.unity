@@ -1504,6 +1504,7 @@ MonoBehaviour:
   - {fileID: 944510206}
   - {fileID: 1839409550}
   _currentNum: 0
+  _doubleNum: 2
 --- !u!1001 &6037414065153837982
 PrefabInstance:
   m_ObjectHideFlags: 0

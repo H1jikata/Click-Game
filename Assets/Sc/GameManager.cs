@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     static  GameManager _instance;
     static public GameManager Instance => _instance;
 
+    public int TotalScore { get => _totalScore; set => _totalScore = value; }
+
     [SerializeField] GameObject _scoreText = default;
     [SerializeField] int _totalScore = 0;
     Text _text;
@@ -37,6 +39,11 @@ public class GameManager : MonoBehaviour
     {
         Instance._totalScore += num;
     }
+
+    static public void AfterGacha(int num)
+    {
+        Instance._totalScore = num;
+    }
     void OnDestroy()
     {
         if(_instance ==this)
@@ -44,4 +51,6 @@ public class GameManager : MonoBehaviour
             _instance = null;
         }
     }
+
+
 }
