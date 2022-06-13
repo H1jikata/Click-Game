@@ -11,9 +11,9 @@ public class GcyaManager : MonoBehaviour
     [SerializeField] List<GameObject> _srare = new List<GameObject>();
     [SerializeField] List<GameObject> _ssrare = new List<GameObject>();
 
-    static int _currentMoney = 0;
+    [SerializeField] int _rnd = default;
 
-    void start()
+    void Start()
     {
 
     }
@@ -21,7 +21,6 @@ public class GcyaManager : MonoBehaviour
     public void OnClick()
     {
         Gacha();
-        //_currentMoney = GameManager.TotalScore; 
     }
 
     void Gacha()
