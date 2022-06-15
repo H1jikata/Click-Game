@@ -12,8 +12,6 @@ public class ClickDoubleManager : MonoBehaviour
 
     void Start()
     {
-        //_buildingPosi = new Transform[_buildingNum];
-
         for(int i  = 0; i < _buildingPosi.Length; i++)
         {
             Instantiate(_buildingPrefub,_buildingPosi[i].transform);
