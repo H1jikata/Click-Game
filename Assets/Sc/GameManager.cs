@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
 
     public int TotalScore { get => _totalScore; set => _totalScore = value; }
 
-    [SerializeField] GameObject _scoreText = default;
-    [SerializeField] int _totalScore = 0;
+    [SerializeField,Tooltip("現在のお金を表示するUI")] GameObject _scoreText = default;
+    [SerializeField,Tooltip("現在のお金")] int _totalScore = 0;
+
+    [SerializeField, Tooltip("ガチャができるお金")] int _underMoney = default;
     Text _text;
 
     void Awake()
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         _text.text = "" + Instance._totalScore;
+        GacyaTime();
     }
 
     static public void AddMoney (int num)
@@ -43,6 +46,14 @@ public class GameManager : MonoBehaviour
     static public void AfterGacha(int num)
     {
         Instance._totalScore = num;
+    }
+
+    void GacyaTime()
+    {
+        if (_underMoney <= _totalScore)
+        {
+            GcyaManager.Judgement(true);
+        }
     }
     void OnDestroy()
     {
