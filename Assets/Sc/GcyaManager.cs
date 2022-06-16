@@ -62,16 +62,19 @@ public class GcyaManager : MonoBehaviour
         {
             _rndNum = Random.Range(0, _rare.Count);
             Instantiate(_rare[_rndNum], _instancePos.transform);
+            Debug.Log("r");
         }
         else if(_sRnd <= _rndProbability && _rRnd > _rndProbability )
         {
             _rndNum = Random.Range(0, _sRare.Count);
             Instantiate(_sRare[_rndNum], _instancePos.transform);
+            Debug.Log("s");
         }
-        else if(_ssRnd < _rndProbability)
+        else if(_ssRnd > _rndProbability)
         {
             _rndNum = Random.Range(0, _ssRare.Count);
             Instantiate(_ssRare[_rndNum], _instancePos.transform);
+            Debug.Log("ss");
         }
     }
 
