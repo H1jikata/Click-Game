@@ -663,9 +663,11 @@
   <ItemGroup>
     <Compile Include="Assets\Sc\Active.cs" />
     <Compile Include="Assets\Sc\ClickDoubleManager.cs" />
+    <Compile Include="Assets\Sc\DateBase.cs" />
     <Compile Include="Assets\Sc\GameManager.cs" />
     <Compile Include="Assets\Sc\GcyaManager.cs" />
     <Compile Include="Assets\Sc\NormalClick.cs" />
+    <Compile Include="Assets\Sc\Test.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
