@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Sc\Active.cs" />
+    <Compile Include="Assets\Sc\ClickDestroy.cs" />
     <Compile Include="Assets\Sc\ClickDoubleManager.cs" />
     <Compile Include="Assets\Sc\DateBase.cs" />
     <Compile Include="Assets\Sc\GameManager.cs" />

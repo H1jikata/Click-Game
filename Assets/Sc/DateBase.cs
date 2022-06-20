@@ -6,33 +6,74 @@ using UnityEngine.UI;
 public class DateBase : MonoBehaviour
 {
     [SerializeField] List<GameObject> _mashPhoto = new List<GameObject>();
-    [SerializeField] List<GameObject> _mashMoji = new List<GameObject>();
+    [SerializeField] GameObject _mashMoji = default;
     [SerializeField] List<bool> IsYouWin = new List<bool>();
 
     [SerializeField] GameObject _missingPhoto = default;
-
-    [SerializeField] GameObject _photoPos = default;
-    [SerializeField] GameObject _mojiPos = default;
+    [SerializeField] int _currentNum = default;
 
     List<string> _sortMash = new List<string>();
+    GameObject _resourcesBox = default;
+
+    Text _text;
     void Start()
     {
+        ListSorted();
+
+        _resourcesBox = Resources.Load(_sortMash[_currentNum]) as GameObject;
+        Instantiate(_resourcesBox, new Vector2(-4.31f, 0.14f), Quaternion.identity);
+
+        _text = _mashMoji.GetComponent<Text>();
+        _text.text = _sortMash[_currentNum];
     }
     public void OnNextClick()
     {
+        if(_mashPhoto.Count - 1 <= _currentNum)
+        {
+            _currentNum = 0;
+            ClickDestroy.FlagDestroy(true);
 
+            InstancePho();
+        }
+        else
+        {
+            ClickDestroy.FlagDestroy(true);
+
+            _currentNum++;
+            InstancePho();
+        }
     }
     public void OnReturnClick()
     {
+        if (0 >= _currentNum)
+        {
+            ClickDestroy.FlagDestroy(true);
 
+            _currentNum = _mashPhoto.Count - 1;
+            InstancePho();
+        }
+        else
+        {
+            ClickDestroy.FlagDestroy(true);
+
+            _currentNum--;
+            InstancePho();
+        }
     }
 
-    void ListSort()
+    void ListSorted()
     {
         for (int i = 0; i < _mashPhoto.Count; i++)
         {
-            _sortMash[i] = _mashPhoto[i].name;
+            _sortMash.Add(_mashPhoto[i].name);
         }
         _sortMash.Sort();
+    }
+
+    void InstancePho()
+    {
+        _resourcesBox = Resources.Load(_sortMash[_currentNum]) as GameObject;
+        Instantiate(_resourcesBox, new Vector2(-4.31f, 0.14f), Quaternion.identity);
+        _text.text = _sortMash[_currentNum];
     }
 }
