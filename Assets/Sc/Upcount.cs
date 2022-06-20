@@ -8,6 +8,18 @@ public class Upcount : MonoBehaviour
     [SerializeField] float _time = default; 
     [SerializeField,Tooltip("お金が増えるインターバル")] float _interval = 2;
 
+    [SerializeField, Tooltip("建てる建物のPrefub")] GameObject _buildingPrefub = default;
+    [SerializeField, Tooltip("建物を建てる位置")] GameObject[] _buildingPosi = default;
+    [SerializeField, Tooltip("建ってる建物の数")] int _currentNum = 0;
+
+    void Start()
+    {
+        for (int i = 0; i < _buildingPosi.Length; i++)
+        {
+            Instantiate(_buildingPrefub, _buildingPosi[i].transform);
+            _buildingPosi[i].SetActive(false);
+        }
+    }
     private void Update()
     { 
         _time += Time.deltaTime;
@@ -19,13 +31,18 @@ public class Upcount : MonoBehaviour
     }
     public void OnLevelUp()
     {
-        if(_AddMoney　== 0)
+        if (_buildingPosi.Length > _currentNum)
         {
-            _AddMoney = 1;
-        }
-        else
-        {
-            _AddMoney *= 10;
+            _buildingPosi[_currentNum].SetActive(true);
+            _currentNum++;
+            if (_AddMoney == 0)
+            {
+                _AddMoney = 1;
+            }
+            else
+            {
+                _AddMoney *= 10;
+            }
         }
     }
 

@@ -674,6 +674,7 @@
     <Compile Include="Assets\Sc\SequenceManager.cs" />
     <Compile Include="Assets\Sc\Test.cs" />
     <Compile Include="Assets\Sc\Upcount.cs" />
+    <Compile Include="Assets\Sc\test1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

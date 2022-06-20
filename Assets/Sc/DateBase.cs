@@ -8,7 +8,6 @@ public class DateBase : MonoBehaviour
     [SerializeField] List<GameObject> _mashPhoto = new List<GameObject>();
     [SerializeField] GameObject _mashMoji = default;
 
-    [SerializeField] GameObject _missingPhoto = default;
     [SerializeField] int _currentNum = default;
 
     List<string> _sortMash = new List<string>();
@@ -20,7 +19,7 @@ public class DateBase : MonoBehaviour
         ListSorted();
 
         _resourcesBox = Resources.Load(_sortMash[_currentNum]) as GameObject;
-        Instantiate(_resourcesBox, new Vector2(-4.31f, 0.14f), Quaternion.identity);
+        Instantiate(_resourcesBox, new Vector3(-4.31f, 0.14f, 1f), Quaternion.identity);
 
         _text = _mashMoji.GetComponent<Text>();
         _text.text = _sortMash[_currentNum];
@@ -72,7 +71,7 @@ public class DateBase : MonoBehaviour
     void InstancePho()
     {
         _resourcesBox = Resources.Load(_sortMash[_currentNum]) as GameObject;
-        Instantiate(_resourcesBox, new Vector2(-4.31f, 0.14f), Quaternion.identity);
+        Instantiate(_resourcesBox, new Vector3(-4.31f, 0.14f, 1f), Quaternion.identity);
         _text.text = _sortMash[_currentNum];
     }
 }

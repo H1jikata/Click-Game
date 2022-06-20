@@ -17,7 +17,6 @@ public class GcyaManager : MonoBehaviour
     [SerializeField] GameObject _prefubLocation = default;
 
     [SerializeField,Tooltip("ガチャができるかを判断するフラグ")] static bool Isflag = default;
-    [SerializeField] bool IsTestFlag = default;
 
     //すべてのレアリティの確率
     [SerializeField,Tooltip("ノーマルの確率")] float _nRnd = default;
@@ -31,6 +30,13 @@ public class GcyaManager : MonoBehaviour
     [SerializeField,Tooltip("ガチャからでたものをだすところ")] GameObject _instancePos = default;
     [SerializeField,Tooltip("ガチャからでるお金")] int _money = 10;
 
+    [SerializeField] GameObject _textObject = default;
+    Text _text;
+
+    private void Start()
+    {
+        _text = _textObject.GetComponent<Text>();
+    }
     public void OnClick()
     {
         if(Isflag == true)
@@ -54,12 +60,16 @@ public class GcyaManager : MonoBehaviour
             {
                 GameManager.AfterGacha(_money);
             }
+            _text.text = "Normal";
+            _text.color = Color.white;
             Debug.Log("n");
         }
         else if(_rRnd <= _rndProbability && _nRnd > _rndProbability)
         {
             _rndNum = Random.Range(0, _rare.Count);
             Instantiate(_rare[_rndNum], _instancePos.transform);
+            _text.text = "Rare";
+            _text.color = Color.black;
             Debug.Log("r");
         }
         else if(_sRnd <= _rndProbability && _rRnd > _rndProbability )
@@ -70,6 +80,8 @@ public class GcyaManager : MonoBehaviour
             {
                 GameManager.CanLevelUp(true);
             }
+            _text.text = "SRare";
+            _text.color = Color.yellow;
             Debug.Log("s");
         }
         else if(_ssRnd > _rndProbability)
@@ -77,6 +89,8 @@ public class GcyaManager : MonoBehaviour
             _rndNum = Random.Range(0, _ssRare.Count);
             Instantiate(_ssRare[_rndNum], _instancePos.transform);
             Debug.Log("ss");
+            _text.text = "SSRare";
+            _text.color = Color.red;
         }
         GameManager.AfterGacha(_maneyCost);
     }

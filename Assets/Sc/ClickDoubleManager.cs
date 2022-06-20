@@ -21,9 +21,12 @@ public class ClickDoubleManager : MonoBehaviour
     
     public void OnClick()
     {
-        _buildingPosi[_currentNum].SetActive(true);
-        _currentNum++;
-        Effect();
+        if(_buildingPosi.Length > _currentNum)
+        {
+            _buildingPosi[_currentNum].SetActive(true);
+            _currentNum++;
+            Effect();
+        }
     }
 
     void Effect()

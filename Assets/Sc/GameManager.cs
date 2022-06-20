@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField, Tooltip("ガチャができるお金")] int _underMoney = default;
 
     [SerializeField] List<GameObject> _bottoms = new List<GameObject>();
-    [SerializeField] string _gacyaSceneName = "";
+    [SerializeField] string _ZukanSceneName = "";
+    [SerializeField] string _GachaSceneName = "";
 
     static public int TotalMoney => _instance._totalScore;
     static bool IsLevelUp = default;
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < _bottoms.Count; i++)
             {
+                if (_bottoms[i] != null)
                 _bottoms[i].SetActive(true);
             }
         }
@@ -92,6 +94,7 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < _bottoms.Count; i++)
             {
+                if(_bottoms[i] != null)
                 _bottoms[i].SetActive(false);
             }
         }
@@ -104,7 +107,13 @@ public class GameManager : MonoBehaviour
 
     public void GacyaLoad()
     {
-        SceneManager.LoadScene(_gacyaSceneName, LoadSceneMode.Additive);
+        SceneManager.LoadScene(_GachaSceneName, LoadSceneMode.Additive);
+    }
+
+    public void ZukanLoad()
+    {
+        SceneManager.LoadScene(_ZukanSceneName);
+        //SceneManager.LoadScene(_ZukanSceneName, LoadSceneMode.Additive);
     }
 
     void OnDestroy()
