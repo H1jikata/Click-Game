@@ -7,7 +7,6 @@ public class DateBase : MonoBehaviour
 {
     [SerializeField] List<GameObject> _mashPhoto = new List<GameObject>();
     [SerializeField] GameObject _mashMoji = default;
-    [SerializeField] List<bool> IsYouWin = new List<bool>();
 
     [SerializeField] GameObject _missingPhoto = default;
     [SerializeField] int _currentNum = default;
@@ -30,9 +29,9 @@ public class DateBase : MonoBehaviour
     {
         if(_mashPhoto.Count - 1 <= _currentNum)
         {
-            _currentNum = 0;
             ClickDestroy.FlagDestroy(true);
 
+            _currentNum = 0;
             InstancePho();
         }
         else

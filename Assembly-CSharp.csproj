@@ -71,7 +71,9 @@
     <Compile Include="Assets\Sc\GameManager.cs" />
     <Compile Include="Assets\Sc\GcyaManager.cs" />
     <Compile Include="Assets\Sc\NormalClick.cs" />
+    <Compile Include="Assets\Sc\ReturnScene.cs" />
     <Compile Include="Assets\Sc\Test.cs" />
+    <Compile Include="Assets\Sc\Upcount.cs" />
     <Reference Include="UnityEngine">
       <HintPath>F:/unity2/2019.3.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

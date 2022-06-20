@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class GameManager : MonoBehaviour
     [SerializeField,Tooltip("現在のお金")] int _totalScore = 0;
 
     [SerializeField, Tooltip("ガチャができるお金")] int _underMoney = default;
+
+    [SerializeField] List<GameObject> _bottoms = new List<GameObject>();
+    [SerializeField] string _gacyaSceneName = "";
+    static bool IsLevelUp = default;
     Text _text;
 
     void Awake()
@@ -27,6 +32,11 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+
+        for(int i = 0; i < _bottoms.Count; i++)
+        {
+            _bottoms[i].SetActive(false);
+        }
     }
     void Start()
     {
@@ -36,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         _text.text = "" + Instance._totalScore;
         GacyaTime();
+        Active();
     }
 
     static public void AddMoney (int num)
@@ -45,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     static public void AfterGacha(int num)
     {
-        Instance._totalScore = num;
+        Instance._totalScore -= num;
     }
 
     void GacyaTime()
@@ -54,14 +65,50 @@ public class GameManager : MonoBehaviour
         {
             GcyaManager.Judgement(true);
         }
+        else
+        {
+            GcyaManager.Judgement(false);
+        }
     }
+
+    static public void CanLevelUp(bool islevelup)
+    {
+        IsLevelUp = islevelup;
+    }
+
+    void Active()
+    {
+        if (IsLevelUp == true)
+        {
+            for (int i = 0; i < _bottoms.Count; i++)
+            {
+                _bottoms[i].SetActive(true);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < _bottoms.Count; i++)
+            {
+                _bottoms[i].SetActive(false);
+            }
+        }
+    }
+
+    public void Onclicked()
+    {
+        IsLevelUp = false;
+    }
+
+    public void GacyaLoad()
+    {
+        SceneManager.LoadScene(_gacyaSceneName, LoadSceneMode.Additive);
+    }
+
     void OnDestroy()
     {
-        if(_instance ==this)
+        if(_instance == this)
         {
             _instance = null;
         }
     }
-
-
 }

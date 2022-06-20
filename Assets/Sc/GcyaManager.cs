@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GcyaManager : MonoBehaviour
 {
+    [SerializeField] int _maneyCost = 50;
     //ガチャからでるものを入れるList
     [SerializeField] List<GameObject> _normal = new List<GameObject>();
     [SerializeField] List<GameObject> _rare = new List<GameObject>();
@@ -28,14 +29,7 @@ public class GcyaManager : MonoBehaviour
     [SerializeField,Tooltip("Listの要素数")] int _rndNum = default;
 
     [SerializeField,Tooltip("ガチャからでたものをだすところ")] GameObject _instancePos = default;
-
-
-
-
-    private void Update()
-    {
-        Isflag = IsTestFlag;
-    }
+    [SerializeField,Tooltip("ガチャからでるお金")] int _money = 10;
 
     public void OnClick()
     {
@@ -56,6 +50,10 @@ public class GcyaManager : MonoBehaviour
         {
             _rndNum = Random.Range(0, _normal.Count);
             Instantiate(_normal[_rndNum], _instancePos.transform);
+            if(_normal[_rndNum] == _normal[1])
+            {
+                GameManager.AfterGacha(_money);
+            }
             Debug.Log("n");
         }
         else if(_rRnd <= _rndProbability && _nRnd > _rndProbability)
@@ -68,6 +66,10 @@ public class GcyaManager : MonoBehaviour
         {
             _rndNum = Random.Range(0, _sRare.Count);
             Instantiate(_sRare[_rndNum], _instancePos.transform);
+            if (_sRare[_rndNum] == _sRare[1])
+            {
+                GameManager.CanLevelUp(true);
+            }
             Debug.Log("s");
         }
         else if(_ssRnd > _rndProbability)
@@ -76,6 +78,7 @@ public class GcyaManager : MonoBehaviour
             Instantiate(_ssRare[_rndNum], _instancePos.transform);
             Debug.Log("ss");
         }
+        GameManager.AfterGacha(_maneyCost);
     }
 
     static public void Judgement(bool isGacya)

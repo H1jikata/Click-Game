@@ -199,6 +199,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433988368}
   m_CullTransparentMesh: 0
+--- !u!1 &735315266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 735315267}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &735315267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735315266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1024.68, y: 981.6178, z: -42.603695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &754982794
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,8 +434,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1565346822}
   - component: {fileID: 1565346821}
+  - component: {fileID: 1565346823}
   m_Layer: 0
-  m_Name: test
+  m_Name: GacyaManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2152fecddb351ab468ec2ae5279b80e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maneyCost: 50
   _normal:
   - {fileID: 8709831064685300788, guid: 1d93e19aa84d7ab4dbaf33ba54cff6d9, type: 3}
   - {fileID: 2349595168897545384, guid: 6e2a78c325bcef04f89cc0ed7fc95148, type: 3}
@@ -430,6 +462,7 @@ MonoBehaviour:
   - {fileID: 6539124127088365131, guid: 667828fef3fb8d040a155c2313c51511, type: 3}
   _sRare:
   - {fileID: 839459460058387757, guid: 7486730b01fab9145a83a0874e7d598c, type: 3}
+  - {fileID: 735315266}
   _ssRare:
   - {fileID: 4434213463785665516, guid: 102678be3440ef046a53dca62d1e022e, type: 3}
   _cantGacyaPrefub: {fileID: 2433393685054695903, guid: 959999c8bebfc5e4291d3e4cb0987fde,
@@ -443,6 +476,7 @@ MonoBehaviour:
   _rndProbability: 0
   _rndNum: 0
   _instancePos: {fileID: 754982794}
+  _money: 10
 --- !u!4 &1565346822
 Transform:
   m_ObjectHideFlags: 0
@@ -457,6 +491,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1565346823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565346820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23591baf9f8f84847934d76e2b8a8723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destroySceneName: Gacya
 --- !u!1 &1647270789
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +529,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647270789}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1647270791
 Camera:
   m_ObjectHideFlags: 0
@@ -958,6 +1005,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: money
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349595168897545384, guid: 6e2a78c325bcef04f89cc0ed7fc95148,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e2a78c325bcef04f89cc0ed7fc95148, type: 3}

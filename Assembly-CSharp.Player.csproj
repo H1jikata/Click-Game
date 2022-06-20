@@ -668,7 +668,9 @@
     <Compile Include="Assets\Sc\GameManager.cs" />
     <Compile Include="Assets\Sc\GcyaManager.cs" />
     <Compile Include="Assets\Sc\NormalClick.cs" />
+    <Compile Include="Assets\Sc\ReturnScene.cs" />
     <Compile Include="Assets\Sc\Test.cs" />
+    <Compile Include="Assets\Sc\Upcount.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
