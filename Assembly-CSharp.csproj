@@ -70,8 +70,11 @@
     <Compile Include="Assets\Sc\DateBase.cs" />
     <Compile Include="Assets\Sc\GameManager.cs" />
     <Compile Include="Assets\Sc\GcyaManager.cs" />
+    <Compile Include="Assets\Sc\IO.cs" />
     <Compile Include="Assets\Sc\NormalClick.cs" />
     <Compile Include="Assets\Sc\ReturnScene.cs" />
+    <Compile Include="Assets\Sc\SaveData.cs" />
+    <Compile Include="Assets\Sc\SequenceManager.cs" />
     <Compile Include="Assets\Sc\Test.cs" />
     <Compile Include="Assets\Sc\Upcount.cs" />
     <Reference Include="UnityEngine">

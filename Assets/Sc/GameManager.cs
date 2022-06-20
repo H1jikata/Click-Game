@@ -18,7 +18,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] List<GameObject> _bottoms = new List<GameObject>();
     [SerializeField] string _gacyaSceneName = "";
+
+    static public int TotalMoney => _instance._totalScore;
     static bool IsLevelUp = default;
+
     Text _text;
 
     void Awake()
@@ -110,5 +113,25 @@ public class GameManager : MonoBehaviour
         {
             _instance = null;
         }
+    }
+    public void Load()
+    {
+        //デバッグ時に楽なのでdataPathにしてるけど、persistentDataPathが適切
+        var save = LocalData.Load<SaveData>(Application.dataPath + "/save.json");
+        if (save == null)
+        {
+            save = new SaveData();
+        }
+
+        _totalScore = save.TotalMoney;
+    }
+
+    public void Save()
+    {
+        SaveData save = new SaveData();
+
+        save.TotalMoney = _totalScore;
+
+        LocalData.Save<SaveData>(Application.dataPath + "/save.json", save);
     }
 }
