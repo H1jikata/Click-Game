@@ -58,7 +58,7 @@ public class GcyaManager : MonoBehaviour
             Instantiate(_normal[_rndNum], _instancePos.transform);
             if(_normal[_rndNum] == _normal[1])
             {
-                GameManager.AfterGacha(_money);
+                GameManager.AddMoney(_money);
             }
             _text.text = "Normal";
             _text.color = Color.white;
